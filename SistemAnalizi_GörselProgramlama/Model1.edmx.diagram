@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a82ac187fe5740a58e75d5628730810b" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="UcusTakipModel.HarekatSB_Komutan" Width="1.5" PointX="3.75" PointY="15.875" />
+        <EntityTypeShape EntityType="UcusTakipModel.HavaAracları" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="UcusTakipModel.Kullanici" Width="1.5" PointX="6" PointY="5.75" />
+        <EntityTypeShape EntityType="UcusTakipModel.Kur" Width="1.5" PointX="0.75" PointY="14.125" />
+        <EntityTypeShape EntityType="UcusTakipModel.Personel" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="UcusTakipModel.PersonelAracYetki" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="UcusTakipModel.PersonelKomutanı" Width="1.5" PointX="6" PointY="9.75" />
+        <EntityTypeShape EntityType="UcusTakipModel.PersonelKur" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="UcusTakipModel.Rol" Width="1.5" PointX="3.75" PointY="3" />
+        <EntityTypeShape EntityType="UcusTakipModel.Tarih" Width="1.5" PointX="1.125" PointY="16.5" />
+        <EntityTypeShape EntityType="UcusTakipModel.UcusBilgileri" Width="1.5" PointX="3" PointY="5.625" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelK__KisiI__3A81B327" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelA__HavaA__38996AB5" />
+        <AssociationConnector Association="UcusTakipModel.FK_UcusBilgileri_HavaAracları" />
+        <AssociationConnector Association="UcusTakipModel.FK_Kullanici_Personel" />
+        <AssociationConnector Association="UcusTakipModel.FK_Kullanici_Rol" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelK__KursN__3C69FB99" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelA__Perso__398D8EEE" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelK__Perso__3B75D760" />
+        <AssociationConnector Association="UcusTakipModel.FK__PersonelK__Perso__3D5E1FD2" />
+        <AssociationConnector Association="UcusTakipModel.FK_Tarih_Personel" />
+        <AssociationConnector Association="UcusTakipModel.FK_UcusBilgileri_Personel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

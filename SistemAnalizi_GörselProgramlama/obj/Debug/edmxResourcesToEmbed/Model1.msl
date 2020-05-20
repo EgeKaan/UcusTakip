@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UcusTakipModelStoreContainer" CdmEntityContainer="UcusTakipEntities">
+    <EntitySetMapping Name="HarekatSB_Komutan">
+      <EntityTypeMapping TypeName="UcusTakipModel.HarekatSB_Komutan">
+        <MappingFragment StoreEntitySet="HarekatSB_Komutan">
+          <ScalarProperty Name="KisiRutbesi" ColumnName="KisiRutbesi" />
+          <ScalarProperty Name="KisiUnvani" ColumnName="KisiUnvani" />
+          <ScalarProperty Name="KisiSoyadi" ColumnName="KisiSoyadi" />
+          <ScalarProperty Name="KisiAdi" ColumnName="KisiAdi" />
+          <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HavaAracları">
+      <EntityTypeMapping TypeName="UcusTakipModel.HavaAracları">
+        <MappingFragment StoreEntitySet="HavaAracları">
+          <ScalarProperty Name="HavaAraciAdi" ColumnName="HavaAraciAdi" />
+          <ScalarProperty Name="HavaAraciTipi" ColumnName="HavaAraciTipi" />
+          <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicis">
+      <EntityTypeMapping TypeName="UcusTakipModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+          <ScalarProperty Name="KullanıcıID" ColumnName="KullanıcıID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs">
+      <EntityTypeMapping TypeName="UcusTakipModel.Kur">
+        <MappingFragment StoreEntitySet="Kurs">
+          <ScalarProperty Name="KursAdi" ColumnName="KursAdi" />
+          <ScalarProperty Name="KursNo" ColumnName="KursNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personels">
+      <EntityTypeMapping TypeName="UcusTakipModel.Personel">
+        <MappingFragment StoreEntitySet="Personel">
+          <ScalarProperty Name="GorevDurumu" ColumnName="GorevDurumu" />
+          <ScalarProperty Name="ToplamUcusYılı" ColumnName="ToplamUcusYılı" />
+          <ScalarProperty Name="TemelKursBitirmeTarihi" ColumnName="TemelKursBitirmeTarihi" />
+          <ScalarProperty Name="IlkUcusTarihi" ColumnName="IlkUcusTarihi" />
+          <ScalarProperty Name="UcusBirligi" ColumnName="UcusBirligi" />
+          <ScalarProperty Name="Birligi" ColumnName="Birligi" />
+          <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+          <ScalarProperty Name="BroveNo" ColumnName="BroveNo" />
+          <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+          <ScalarProperty Name="SinifRutbesi" ColumnName="SinifRutbesi" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonelAracYetkis">
+      <EntityTypeMapping TypeName="UcusTakipModel.PersonelAracYetki">
+        <MappingFragment StoreEntitySet="PersonelAracYetki">
+          <ScalarProperty Name="AracToplamUcusSuresi" ColumnName="AracToplamUcusSuresi" />
+          <ScalarProperty Name="YetkisiVar" ColumnName="YetkisiVar" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+          <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+          <ScalarProperty Name="PersonelAracYetkiID" ColumnName="PersonelAracYetkiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonelKomutanı">
+      <EntityTypeMapping TypeName="UcusTakipModel.PersonelKomutanı">
+        <MappingFragment StoreEntitySet="PersonelKomutanı">
+          <ScalarProperty Name="KisiAciklamasi" ColumnName="KisiAciklamasi" />
+          <ScalarProperty Name="PKTarih" ColumnName="PKTarih" />
+          <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+          <ScalarProperty Name="PersonelKomutanıID" ColumnName="PersonelKomutanıID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonelKurs">
+      <EntityTypeMapping TypeName="UcusTakipModel.PersonelKur">
+        <MappingFragment StoreEntitySet="PersonelKurs">
+          <ScalarProperty Name="KursTarihi" ColumnName="KursTarihi" />
+          <ScalarProperty Name="KursNo" ColumnName="KursNo" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+          <ScalarProperty Name="PersonelKursID" ColumnName="PersonelKursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rols">
+      <EntityTypeMapping TypeName="UcusTakipModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="RolKod" ColumnName="RolKod" />
+          <ScalarProperty Name="RolAdi" ColumnName="RolAdi" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarihs">
+      <EntityTypeMapping TypeName="UcusTakipModel.Tarih">
+        <MappingFragment StoreEntitySet="Tarih">
+          <ScalarProperty Name="BesYillikSaglikSon" ColumnName="BesYillikSaglikSon" />
+          <ScalarProperty Name="BesYillikSaglik" ColumnName="BesYillikSaglik" />
+          <ScalarProperty Name="YillikSaglikSon" ColumnName="YillikSaglikSon" />
+          <ScalarProperty Name="YillikSaglik" ColumnName="YillikSaglik" />
+          <ScalarProperty Name="HeliStanSonTarih" ColumnName="HeliStanSonTarih" />
+          <ScalarProperty Name="UcakStanSonTarihi" ColumnName="UcakStanSonTarihi" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+          <ScalarProperty Name="TarihID" ColumnName="TarihID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UcusBilgileris">
+      <EntityTypeMapping TypeName="UcusTakipModel.UcusBilgileri">
+        <MappingFragment StoreEntitySet="UcusBilgileri">
+          <ScalarProperty Name="UcusDakikası" ColumnName="UcusDakikası" />
+          <ScalarProperty Name="UcusTipi" ColumnName="UcusTipi" />
+          <ScalarProperty Name="UcusTarihi" ColumnName="UcusTarihi" />
+          <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+          <ScalarProperty Name="UcusNo" ColumnName="UcusNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

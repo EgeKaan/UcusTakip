@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UcusTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HarekatSB_Komutan">
+          <Key>
+            <PropertyRef Name="KisiID" />
+          </Key>
+          <Property Name="KisiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KisiSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KisiUnvani" Type="nvarchar" MaxLength="40" />
+          <Property Name="KisiRutbesi" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="HavaAracları">
+          <Key>
+            <PropertyRef Name="HavaAraciNo" />
+          </Key>
+          <Property Name="HavaAraciNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HavaAraciTipi" Type="nchar" MaxLength="10" />
+          <Property Name="HavaAraciAdi" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="RolID" Type="int" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="Sifre" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="KursNo" />
+          </Key>
+          <Property Name="KursNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KursAdi" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="PersonelNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar(max)" />
+          <Property Name="Soyad" Type="nvarchar(max)" />
+          <Property Name="SinifRutbesi" Type="nvarchar" MaxLength="30" />
+          <Property Name="SicilNo" Type="int" />
+          <Property Name="BroveNo" Type="int" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="Birligi" Type="nvarchar" MaxLength="25" />
+          <Property Name="UcusBirligi" Type="nvarchar" MaxLength="25" />
+          <Property Name="IlkUcusTarihi" Type="date" />
+          <Property Name="TemelKursBitirmeTarihi" Type="date" />
+          <Property Name="ToplamUcusYılı" Type="int" />
+          <Property Name="GorevDurumu" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PersonelAracYetki">
+          <Key>
+            <PropertyRef Name="PersonelAracYetkiID" />
+          </Key>
+          <Property Name="PersonelAracYetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HavaAraciNo" Type="int" />
+          <Property Name="PersonelNo" Type="int" />
+          <Property Name="YetkisiVar" Type="bit" />
+          <Property Name="AracToplamUcusSuresi" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonelKomutanı">
+          <Key>
+            <PropertyRef Name="PersonelKomutanıID" />
+          </Key>
+          <Property Name="PersonelKomutanıID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="int" />
+          <Property Name="KisiID" Type="int" />
+          <Property Name="PKTarih" Type="date" />
+          <Property Name="KisiAciklamasi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PersonelKurs">
+          <Key>
+            <PropertyRef Name="PersonelKursID" />
+          </Key>
+          <Property Name="PersonelKursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="int" />
+          <Property Name="KursNo" Type="int" />
+          <Property Name="KursTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolAdi" Type="nchar" MaxLength="10" />
+          <Property Name="RolKod" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tarih">
+          <Key>
+            <PropertyRef Name="TarihID" />
+          </Key>
+          <Property Name="TarihID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="int" Nullable="false" />
+          <Property Name="UcakStanSonTarihi" Type="date" />
+          <Property Name="HeliStanSonTarih" Type="date" />
+          <Property Name="YillikSaglik" Type="date" />
+          <Property Name="YillikSaglikSon" Type="date" />
+          <Property Name="BesYillikSaglik" Type="date" />
+          <Property Name="BesYillikSaglikSon" Type="date" />
+        </EntityType>
+        <EntityType Name="UcusBilgileri">
+          <Key>
+            <PropertyRef Name="UcusNo" />
+          </Key>
+          <Property Name="UcusNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="int" Nullable="false" />
+          <Property Name="HavaAraciNo" Type="int" Nullable="false" />
+          <Property Name="UcusTarihi" Type="date" />
+          <Property Name="UcusTipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="UcusDakikası" Type="int" />
+        </EntityType>
+        <Association Name="FK__PersonelA__HavaA__4CA06362">
+          <End Role="HavaAracları" Type="Self.HavaAracları" Multiplicity="0..1" />
+          <End Role="PersonelAracYetki" Type="Self.PersonelAracYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HavaAracları">
+              <PropertyRef Name="HavaAraciNo" />
+            </Principal>
+            <Dependent Role="PersonelAracYetki">
+              <PropertyRef Name="HavaAraciNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelA__Perso__4D94879B">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelAracYetki" Type="Self.PersonelAracYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelAracYetki">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__KisiI__4E88ABD4">
+          <End Role="HarekatSB_Komutan" Type="Self.HarekatSB_Komutan" Multiplicity="0..1" />
+          <End Role="PersonelKomutanı" Type="Self.PersonelKomutanı" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HarekatSB_Komutan">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="PersonelKomutanı">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__KursN__5070F446">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1" />
+          <End Role="PersonelKurs" Type="Self.PersonelKurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="KursNo" />
+            </Principal>
+            <Dependent Role="PersonelKurs">
+              <PropertyRef Name="KursNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__Perso__4F7CD00D">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelKomutanı" Type="Self.PersonelKomutanı" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelKomutanı">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__Perso__5165187F">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelKurs" Type="Self.PersonelKurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelKurs">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarih_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Tarih" Type="Self.Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="Tarih">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UcusBilgileri_HavaAracları">
+          <End Role="HavaAracları" Type="Self.HavaAracları" Multiplicity="1" />
+          <End Role="UcusBilgileri" Type="Self.UcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HavaAracları">
+              <PropertyRef Name="HavaAraciNo" />
+            </Principal>
+            <Dependent Role="UcusBilgileri">
+              <PropertyRef Name="HavaAraciNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UcusBilgileri_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="UcusBilgileri" Type="Self.UcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="UcusBilgileri">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UcusTakipModelStoreContainer">
+          <EntitySet Name="HarekatSB_Komutan" EntityType="Self.HarekatSB_Komutan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HavaAracları" EntityType="Self.HavaAracları" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelAracYetki" EntityType="Self.PersonelAracYetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelKomutanı" EntityType="Self.PersonelKomutanı" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelKurs" EntityType="Self.PersonelKurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UcusBilgileri" EntityType="Self.UcusBilgileri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PersonelA__HavaA__4CA06362" Association="Self.FK__PersonelA__HavaA__4CA06362">
+            <End Role="HavaAracları" EntitySet="HavaAracları" />
+            <End Role="PersonelAracYetki" EntitySet="PersonelAracYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelA__Perso__4D94879B" Association="Self.FK__PersonelA__Perso__4D94879B">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelAracYetki" EntitySet="PersonelAracYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__KisiI__4E88ABD4" Association="Self.FK__PersonelK__KisiI__4E88ABD4">
+            <End Role="HarekatSB_Komutan" EntitySet="HarekatSB_Komutan" />
+            <End Role="PersonelKomutanı" EntitySet="PersonelKomutanı" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__KursN__5070F446" Association="Self.FK__PersonelK__KursN__5070F446">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="PersonelKurs" EntitySet="PersonelKurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__Perso__4F7CD00D" Association="Self.FK__PersonelK__Perso__4F7CD00D">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelKomutanı" EntitySet="PersonelKomutanı" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__Perso__5165187F" Association="Self.FK__PersonelK__Perso__5165187F">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelKurs" EntitySet="PersonelKurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Personel" Association="Self.FK_Kullanici_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="Self.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarih_Personel" Association="Self.FK_Tarih_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Tarih" EntitySet="Tarih" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UcusBilgileri_HavaAracları" Association="Self.FK_UcusBilgileri_HavaAracları">
+            <End Role="HavaAracları" EntitySet="HavaAracları" />
+            <End Role="UcusBilgileri" EntitySet="UcusBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UcusBilgileri_Personel" Association="Self.FK_UcusBilgileri_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="UcusBilgileri" EntitySet="UcusBilgileri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UcusTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UcusTakipEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HarekatSB_Komutan" EntityType="UcusTakipModel.HarekatSB_Komutan" />
+          <EntitySet Name="HavaAracları" EntityType="UcusTakipModel.HavaAracları" />
+          <EntitySet Name="Kullanicis" EntityType="UcusTakipModel.Kullanici" />
+          <EntitySet Name="Kurs" EntityType="UcusTakipModel.Kur" />
+          <EntitySet Name="Personels" EntityType="UcusTakipModel.Personel" />
+          <EntitySet Name="PersonelAracYetkis" EntityType="UcusTakipModel.PersonelAracYetki" />
+          <EntitySet Name="PersonelKomutanı" EntityType="UcusTakipModel.PersonelKomutanı" />
+          <EntitySet Name="PersonelKurs" EntityType="UcusTakipModel.PersonelKur" />
+          <EntitySet Name="Rols" EntityType="UcusTakipModel.Rol" />
+          <EntitySet Name="Tarihs" EntityType="UcusTakipModel.Tarih" />
+          <EntitySet Name="UcusBilgileris" EntityType="UcusTakipModel.UcusBilgileri" />
+          <AssociationSet Name="FK__PersonelK__KisiI__3A81B327" Association="UcusTakipModel.FK__PersonelK__KisiI__3A81B327">
+            <End Role="HarekatSB_Komutan" EntitySet="HarekatSB_Komutan" />
+            <End Role="PersonelKomutanı" EntitySet="PersonelKomutanı" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelA__HavaA__38996AB5" Association="UcusTakipModel.FK__PersonelA__HavaA__38996AB5">
+            <End Role="HavaAracları" EntitySet="HavaAracları" />
+            <End Role="PersonelAracYetki" EntitySet="PersonelAracYetkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UcusBilgileri_HavaAracları" Association="UcusTakipModel.FK_UcusBilgileri_HavaAracları">
+            <End Role="HavaAracları" EntitySet="HavaAracları" />
+            <End Role="UcusBilgileri" EntitySet="UcusBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Personel" Association="UcusTakipModel.FK_Kullanici_Personel">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="Kullanici" EntitySet="Kullanicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="UcusTakipModel.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Kullanici" EntitySet="Kullanicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__KursN__3C69FB99" Association="UcusTakipModel.FK__PersonelK__KursN__3C69FB99">
+            <End Role="Kur" EntitySet="Kurs" />
+            <End Role="PersonelKur" EntitySet="PersonelKurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelA__Perso__398D8EEE" Association="UcusTakipModel.FK__PersonelA__Perso__398D8EEE">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="PersonelAracYetki" EntitySet="PersonelAracYetkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__Perso__3B75D760" Association="UcusTakipModel.FK__PersonelK__Perso__3B75D760">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="PersonelKomutanı" EntitySet="PersonelKomutanı" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelK__Perso__3D5E1FD2" Association="UcusTakipModel.FK__PersonelK__Perso__3D5E1FD2">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="PersonelKur" EntitySet="PersonelKurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarih_Personel" Association="UcusTakipModel.FK_Tarih_Personel">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="Tarih" EntitySet="Tarihs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UcusBilgileri_Personel" Association="UcusTakipModel.FK_UcusBilgileri_Personel">
+            <End Role="Personel" EntitySet="Personels" />
+            <End Role="UcusBilgileri" EntitySet="UcusBilgileris" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="HarekatSB_Komutan">
+          <Key>
+            <PropertyRef Name="KisiID" />
+          </Key>
+          <Property Name="KisiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KisiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KisiUnvani" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="KisiRutbesi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PersonelKomutanı" Relationship="UcusTakipModel.FK__PersonelK__KisiI__3A81B327" FromRole="HarekatSB_Komutan" ToRole="PersonelKomutanı" />
+        </EntityType>
+        <EntityType Name="HavaAracları">
+          <Key>
+            <PropertyRef Name="HavaAraciNo" />
+          </Key>
+          <Property Name="HavaAraciNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HavaAraciTipi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="HavaAraciAdi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="PersonelAracYetkis" Relationship="UcusTakipModel.FK__PersonelA__HavaA__38996AB5" FromRole="HavaAracları" ToRole="PersonelAracYetki" />
+          <NavigationProperty Name="UcusBilgileris" Relationship="UcusTakipModel.FK_UcusBilgileri_HavaAracları" FromRole="HavaAracları" ToRole="UcusBilgileri" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="RolID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK_Kullanici_Personel" FromRole="Kullanici" ToRole="Personel" />
+          <NavigationProperty Name="Rol" Relationship="UcusTakipModel.FK_Kullanici_Rol" FromRole="Kullanici" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Kur">
+          <Key>
+            <PropertyRef Name="KursNo" />
+          </Key>
+          <Property Name="KursNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KursAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PersonelKurs" Relationship="UcusTakipModel.FK__PersonelK__KursN__3C69FB99" FromRole="Kur" ToRole="PersonelKur" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="PersonelNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SinifRutbesi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SicilNo" Type="Int32" />
+          <Property Name="BroveNo" Type="Int32" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Birligi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="UcusBirligi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="IlkUcusTarihi" Type="DateTime" Precision="0" />
+          <Property Name="TemelKursBitirmeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="ToplamUcusYılı" Type="Int32" />
+          <Property Name="GorevDurumu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Kullanicis" Relationship="UcusTakipModel.FK_Kullanici_Personel" FromRole="Personel" ToRole="Kullanici" />
+          <NavigationProperty Name="PersonelAracYetkis" Relationship="UcusTakipModel.FK__PersonelA__Perso__398D8EEE" FromRole="Personel" ToRole="PersonelAracYetki" />
+          <NavigationProperty Name="PersonelKomutanı" Relationship="UcusTakipModel.FK__PersonelK__Perso__3B75D760" FromRole="Personel" ToRole="PersonelKomutanı" />
+          <NavigationProperty Name="PersonelKurs" Relationship="UcusTakipModel.FK__PersonelK__Perso__3D5E1FD2" FromRole="Personel" ToRole="PersonelKur" />
+          <NavigationProperty Name="Tarihs" Relationship="UcusTakipModel.FK_Tarih_Personel" FromRole="Personel" ToRole="Tarih" />
+          <NavigationProperty Name="UcusBilgileris" Relationship="UcusTakipModel.FK_UcusBilgileri_Personel" FromRole="Personel" ToRole="UcusBilgileri" />
+        </EntityType>
+        <EntityType Name="PersonelAracYetki">
+          <Key>
+            <PropertyRef Name="PersonelAracYetkiID" />
+          </Key>
+          <Property Name="PersonelAracYetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HavaAraciNo" Type="Int32" />
+          <Property Name="PersonelNo" Type="Int32" />
+          <Property Name="YetkisiVar" Type="Boolean" />
+          <Property Name="AracToplamUcusSuresi" Type="Int32" />
+          <NavigationProperty Name="HavaAracları" Relationship="UcusTakipModel.FK__PersonelA__HavaA__38996AB5" FromRole="PersonelAracYetki" ToRole="HavaAracları" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK__PersonelA__Perso__398D8EEE" FromRole="PersonelAracYetki" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="PersonelKomutanı">
+          <Key>
+            <PropertyRef Name="PersonelKomutanıID" />
+          </Key>
+          <Property Name="PersonelKomutanıID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="Int32" />
+          <Property Name="KisiID" Type="Int32" />
+          <Property Name="PKTarih" Type="DateTime" Precision="0" />
+          <Property Name="KisiAciklamasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HarekatSB_Komutan" Relationship="UcusTakipModel.FK__PersonelK__KisiI__3A81B327" FromRole="PersonelKomutanı" ToRole="HarekatSB_Komutan" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK__PersonelK__Perso__3B75D760" FromRole="PersonelKomutanı" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="PersonelKur">
+          <Key>
+            <PropertyRef Name="PersonelKursID" />
+          </Key>
+          <Property Name="PersonelKursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="Int32" />
+          <Property Name="KursNo" Type="Int32" />
+          <Property Name="KursTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Kur" Relationship="UcusTakipModel.FK__PersonelK__KursN__3C69FB99" FromRole="PersonelKur" ToRole="Kur" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK__PersonelK__Perso__3D5E1FD2" FromRole="PersonelKur" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolAdi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RolKod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Kullanicis" Relationship="UcusTakipModel.FK_Kullanici_Rol" FromRole="Rol" ToRole="Kullanici" />
+        </EntityType>
+        <EntityType Name="Tarih">
+          <Key>
+            <PropertyRef Name="TarihID" />
+          </Key>
+          <Property Name="TarihID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="Int32" Nullable="false" />
+          <Property Name="UcakStanSonTarihi" Type="DateTime" Precision="0" />
+          <Property Name="HeliStanSonTarih" Type="DateTime" Precision="0" />
+          <Property Name="YillikSaglik" Type="DateTime" Precision="0" />
+          <Property Name="YillikSaglikSon" Type="DateTime" Precision="0" />
+          <Property Name="BesYillikSaglik" Type="DateTime" Precision="0" />
+          <Property Name="BesYillikSaglikSon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK_Tarih_Personel" FromRole="Tarih" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="UcusBilgileri">
+          <Key>
+            <PropertyRef Name="UcusNo" />
+          </Key>
+          <Property Name="UcusNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="Int32" Nullable="false" />
+          <Property Name="HavaAraciNo" Type="Int32" Nullable="false" />
+          <Property Name="UcusTarihi" Type="DateTime" Precision="0" />
+          <Property Name="UcusTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UcusDakikası" Type="Int32" />
+          <NavigationProperty Name="HavaAracları" Relationship="UcusTakipModel.FK_UcusBilgileri_HavaAracları" FromRole="UcusBilgileri" ToRole="HavaAracları" />
+          <NavigationProperty Name="Personel" Relationship="UcusTakipModel.FK_UcusBilgileri_Personel" FromRole="UcusBilgileri" ToRole="Personel" />
+        </EntityType>
+        <Association Name="FK__PersonelK__KisiI__3A81B327">
+          <End Type="UcusTakipModel.HarekatSB_Komutan" Role="HarekatSB_Komutan" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelKomutanı" Role="PersonelKomutanı" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HarekatSB_Komutan">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="PersonelKomutanı">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelA__HavaA__38996AB5">
+          <End Type="UcusTakipModel.HavaAracları" Role="HavaAracları" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelAracYetki" Role="PersonelAracYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HavaAracları">
+              <PropertyRef Name="HavaAraciNo" />
+            </Principal>
+            <Dependent Role="PersonelAracYetki">
+              <PropertyRef Name="HavaAraciNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UcusBilgileri_HavaAracları">
+          <End Type="UcusTakipModel.HavaAracları" Role="HavaAracları" Multiplicity="1" />
+          <End Type="UcusTakipModel.UcusBilgileri" Role="UcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HavaAracları">
+              <PropertyRef Name="HavaAraciNo" />
+            </Principal>
+            <Dependent Role="UcusBilgileri">
+              <PropertyRef Name="HavaAraciNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Personel">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="UcusTakipModel.Kullanici" Role="Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Type="UcusTakipModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="UcusTakipModel.Kullanici" Role="Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__KursN__3C69FB99">
+          <End Type="UcusTakipModel.Kur" Role="Kur" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelKur" Role="PersonelKur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kur">
+              <PropertyRef Name="KursNo" />
+            </Principal>
+            <Dependent Role="PersonelKur">
+              <PropertyRef Name="KursNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelA__Perso__398D8EEE">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelAracYetki" Role="PersonelAracYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelAracYetki">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__Perso__3B75D760">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelKomutanı" Role="PersonelKomutanı" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelKomutanı">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelK__Perso__3D5E1FD2">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="UcusTakipModel.PersonelKur" Role="PersonelKur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="PersonelKur">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarih_Personel">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="UcusTakipModel.Tarih" Role="Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="Tarih">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UcusBilgileri_Personel">
+          <End Type="UcusTakipModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="UcusTakipModel.UcusBilgileri" Role="UcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelNo" />
+            </Principal>
+            <Dependent Role="UcusBilgileri">
+              <PropertyRef Name="PersonelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UcusTakipModelStoreContainer" CdmEntityContainer="UcusTakipEntities">
+          <EntitySetMapping Name="HarekatSB_Komutan">
+            <EntityTypeMapping TypeName="UcusTakipModel.HarekatSB_Komutan">
+              <MappingFragment StoreEntitySet="HarekatSB_Komutan">
+                <ScalarProperty Name="KisiRutbesi" ColumnName="KisiRutbesi" />
+                <ScalarProperty Name="KisiUnvani" ColumnName="KisiUnvani" />
+                <ScalarProperty Name="KisiSoyadi" ColumnName="KisiSoyadi" />
+                <ScalarProperty Name="KisiAdi" ColumnName="KisiAdi" />
+                <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HavaAracları">
+            <EntityTypeMapping TypeName="UcusTakipModel.HavaAracları">
+              <MappingFragment StoreEntitySet="HavaAracları">
+                <ScalarProperty Name="HavaAraciAdi" ColumnName="HavaAraciAdi" />
+                <ScalarProperty Name="HavaAraciTipi" ColumnName="HavaAraciTipi" />
+                <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicis">
+            <EntityTypeMapping TypeName="UcusTakipModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="KullanıcıID" ColumnName="KullanıcıID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs">
+            <EntityTypeMapping TypeName="UcusTakipModel.Kur">
+              <MappingFragment StoreEntitySet="Kurs">
+                <ScalarProperty Name="KursAdi" ColumnName="KursAdi" />
+                <ScalarProperty Name="KursNo" ColumnName="KursNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personels">
+            <EntityTypeMapping TypeName="UcusTakipModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="GorevDurumu" ColumnName="GorevDurumu" />
+                <ScalarProperty Name="ToplamUcusYılı" ColumnName="ToplamUcusYılı" />
+                <ScalarProperty Name="TemelKursBitirmeTarihi" ColumnName="TemelKursBitirmeTarihi" />
+                <ScalarProperty Name="IlkUcusTarihi" ColumnName="IlkUcusTarihi" />
+                <ScalarProperty Name="UcusBirligi" ColumnName="UcusBirligi" />
+                <ScalarProperty Name="Birligi" ColumnName="Birligi" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="BroveNo" ColumnName="BroveNo" />
+                <ScalarProperty Name="SicilNo" ColumnName="SicilNo" />
+                <ScalarProperty Name="SinifRutbesi" ColumnName="SinifRutbesi" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelAracYetkis">
+            <EntityTypeMapping TypeName="UcusTakipModel.PersonelAracYetki">
+              <MappingFragment StoreEntitySet="PersonelAracYetki">
+                <ScalarProperty Name="AracToplamUcusSuresi" ColumnName="AracToplamUcusSuresi" />
+                <ScalarProperty Name="YetkisiVar" ColumnName="YetkisiVar" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+                <ScalarProperty Name="PersonelAracYetkiID" ColumnName="PersonelAracYetkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelKomutanı">
+            <EntityTypeMapping TypeName="UcusTakipModel.PersonelKomutanı">
+              <MappingFragment StoreEntitySet="PersonelKomutanı">
+                <ScalarProperty Name="KisiAciklamasi" ColumnName="KisiAciklamasi" />
+                <ScalarProperty Name="PKTarih" ColumnName="PKTarih" />
+                <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="PersonelKomutanıID" ColumnName="PersonelKomutanıID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelKurs">
+            <EntityTypeMapping TypeName="UcusTakipModel.PersonelKur">
+              <MappingFragment StoreEntitySet="PersonelKurs">
+                <ScalarProperty Name="KursTarihi" ColumnName="KursTarihi" />
+                <ScalarProperty Name="KursNo" ColumnName="KursNo" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="PersonelKursID" ColumnName="PersonelKursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="UcusTakipModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RolKod" ColumnName="RolKod" />
+                <ScalarProperty Name="RolAdi" ColumnName="RolAdi" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarihs">
+            <EntityTypeMapping TypeName="UcusTakipModel.Tarih">
+              <MappingFragment StoreEntitySet="Tarih">
+                <ScalarProperty Name="BesYillikSaglikSon" ColumnName="BesYillikSaglikSon" />
+                <ScalarProperty Name="BesYillikSaglik" ColumnName="BesYillikSaglik" />
+                <ScalarProperty Name="YillikSaglikSon" ColumnName="YillikSaglikSon" />
+                <ScalarProperty Name="YillikSaglik" ColumnName="YillikSaglik" />
+                <ScalarProperty Name="HeliStanSonTarih" ColumnName="HeliStanSonTarih" />
+                <ScalarProperty Name="UcakStanSonTarihi" ColumnName="UcakStanSonTarihi" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="TarihID" ColumnName="TarihID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UcusBilgileris">
+            <EntityTypeMapping TypeName="UcusTakipModel.UcusBilgileri">
+              <MappingFragment StoreEntitySet="UcusBilgileri">
+                <ScalarProperty Name="UcusDakikası" ColumnName="UcusDakikası" />
+                <ScalarProperty Name="UcusTipi" ColumnName="UcusTipi" />
+                <ScalarProperty Name="UcusTarihi" ColumnName="UcusTarihi" />
+                <ScalarProperty Name="HavaAraciNo" ColumnName="HavaAraciNo" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="UcusNo" ColumnName="UcusNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
